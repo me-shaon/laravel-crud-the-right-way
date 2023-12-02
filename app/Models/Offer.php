@@ -24,6 +24,11 @@ class Offer extends Model implements HasMedia
         'status'
     ];
 
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
@@ -32,5 +37,12 @@ class Offer extends Model implements HasMedia
     public function locations(): BelongsToMany
     {
         return $this->belongsToMany(Location::class);
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        return $this->hasMedia()
+            ? $this->getFirstMediaUrl()
+            : self::PLACEHOLDER_IMAGE_PATH;
     }
 }
