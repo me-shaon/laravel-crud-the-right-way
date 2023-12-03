@@ -16,7 +16,8 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //
+        $offers = Offer::with(['author', 'categories', 'locations'])->paginate(5);
+        return view('offers.index', compact('offers'));
     }
 
     /**
