@@ -27,7 +27,7 @@ class OfferController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource for the logged-in user
      */
     public function myOffers(Request $request, OfferService $offerService)
     {
@@ -110,8 +110,10 @@ class OfferController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Offer $offer, OfferService $offerService)
     {
-        //
+        $offerService->destroy($offer);
+
+        return response('Offer deleted');
     }
 }

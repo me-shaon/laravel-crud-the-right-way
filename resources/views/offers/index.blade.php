@@ -172,7 +172,8 @@
                                             </svg>
                                         </a>
 
-                                        <button data-delete-route="{{ route('offers.destroy', $offer->id) }}"
+                                        <button
+                                                data-delete-route="{{ route('offers.destroy', $offer->id) }}"
                                                 class="delete-item-btn inline-flex w-8 h-8 items-center justify-center bg-red-500 hover:bg-red-600 rounded-2xl">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
                                                  height="20">
@@ -182,6 +183,7 @@
                                                     fill="rgba(255,255,255,1)"/>
                                             </svg>
                                         </button>
+
                                     </div>
                                 </td>
                             </tr>
@@ -197,6 +199,6 @@
     </div>
 @endsection
 
-{{--@section('script')--}}
-{{--    @include('layouts.delete-script')--}}
-{{--@endsection--}}
+@section('script')
+    @include('layouts.scripts.delete-script')
+@endsection
