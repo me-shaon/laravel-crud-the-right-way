@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Filters\OfferFilter;
 use App\Models\Offer;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -44,5 +45,17 @@ class OfferService
                     ->toMediaCollection();
             }
         }, 5);
+    }
+
+    public function get(array $queryParams = [])
+    {
+        $queryBuilder = Offer::with(['author', 'categories', 'locations'])->latest();
+
+        $offers = resolve(OfferFilter::class)->getResults([
+            'builder' => $queryBuilder,
+            'params' => $queryParams
+        ]);
+
+        return $offers;
     }
 }

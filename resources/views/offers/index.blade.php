@@ -14,6 +14,75 @@
 
 
         <section class="py-8 container px-4 mx-auto">
+            <div class="bg-white py-4 mb-4 rounded-xl">
+                <form action="{{ route('offers.index') }}" method="GET"
+                      class="flex md:flex-row flex-col gap-8 justify-center">
+                    <div class="px-8 py-2 bg-white border border-gray-200 rounded-3xl">
+                        <select
+                            name="status"
+                            class="w-full bg-transparent text-md text-gray-900 placeholder-gray-200 font-bold outline-none"
+                        >
+                            <option value="" selected>Select status...</option>
+                            @foreach(\App\Constants\Status::LIST as $status)
+                                <option
+                                    {{ request()->query('status') === $status ? 'selected' : '' }}
+                                    value="{{ $status }}"
+                                >{{ $status }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="px-8 py-2 bg-white border border-gray-200 rounded-3xl">
+                        <select
+                            class="w-full bg-transparent text-md text-gray-900 placeholder-gray-200 font-bold outline-none"
+                            name="location"
+                        >
+                            <option disabled selected>Select location...</option>
+                            @foreach($locations as $location)
+                                <option
+                                    {{ request()->query('location') == $location->id ? 'selected' : '' }}
+                                    value="{{ $location->id }}">{{ $location->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="px-8 py-2 bg-white border border-gray-200 rounded-3xl">
+                        <select
+                            class="w-full bg-transparent text-md text-gray-900 placeholder-gray-200 font-bold outline-none"
+                            name="category"
+                        >
+                            <option disabled selected>Select category...</option>
+                            @foreach($categories as $category)
+                                <option
+                                    {{ request()->query('category') == $category->id ? 'selected' : '' }}
+                                    value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="bg-white">
+                        <input
+                            class="appearance-none px-6 py-2 w-full text-sm text-gray-600 font-bold bg-white placeholder-gray-300 outline-none border border-gray-200 focus:ring-1 focus:ring-green-200 rounded-full"
+                            type="text"
+                            name="title"
+                            placeholder="Search by title..."
+                            value="{{ request()->query('title') }}"
+                        >
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="inline-block place-items-center md:max-w-max max-w-full w-full px-8 py-2 text-lg text-center text-white font-bold bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-200 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path
+                                    d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"
+                                    fill="rgba(255,255,255,1)"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="{{ url()->current() }}"
+                       class="inline-block place-items-center md:max-w-max max-w-full w-full px-8 py-2 text-md text-center text-black font-normal bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:ring-gray-200 rounded-full">
+                        Clear filter
+                    </a>
+                </form>
+            </div>
 
             @if ($offers->count() <= 0)
                 <div class="mb-16 bg-white border border-gray-100 rounded-xl">

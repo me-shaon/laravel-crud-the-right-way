@@ -8,6 +8,11 @@ use App\Models\User;
 
 class OfferPolicy
 {
+    public function viewAny(User $user)
+    {
+        return $user->role === Role::ADMIN;
+    }
+
     public function create(User $user)
     {
         return $user->role === Role::USER;
