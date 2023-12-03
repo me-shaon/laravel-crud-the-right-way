@@ -13,6 +13,11 @@ class OfferPolicy
         return $user->role === Role::ADMIN;
     }
 
+    public function viewMy(User $user)
+    {
+        return $user->role === Role::USER;
+    }
+
     public function create(User $user)
     {
         return $user->role === Role::USER;

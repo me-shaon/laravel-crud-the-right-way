@@ -27,6 +27,21 @@ class OfferController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function myOffers(Request $request, OfferService $offerService)
+    {
+        $this->authorize('viewMy', Offer::class);
+
+        $categories = Category::orderBy('title')->get();
+        $locations = Location::orderBy('title')->get();
+
+        $offers = $offerService->getMine($request->query());
+
+        return view('offers.index', compact('offers', 'categories', 'locations'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

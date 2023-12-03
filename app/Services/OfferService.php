@@ -58,4 +58,18 @@ class OfferService
 
         return $offers;
     }
+
+    public function getMine(array $queryParams = [])
+    {
+        $queryBuilder = Offer::with(['author', 'categories', 'locations'])
+            ->where('author_id', auth()->user()->id)
+            ->latest();
+
+        $offers = resolve(OfferFilter::class)->getResults([
+            'builder' => $queryBuilder,
+            'params' => $queryParams
+        ]);
+
+        return $offers;
+    }
 }

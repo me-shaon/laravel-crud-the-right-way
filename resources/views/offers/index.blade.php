@@ -15,7 +15,7 @@
 
         <section class="py-8 container px-4 mx-auto">
             <div class="bg-white py-4 mb-4 rounded-xl">
-                <form action="{{ route('offers.index') }}" method="GET"
+                <form action="{{ auth()->user()->isAdmin() ? route('offers.index') : route('offers.my') }}" method="GET"
                       class="flex md:flex-row flex-col gap-8 justify-center">
                     <div class="px-8 py-2 bg-white border border-gray-200 rounded-3xl">
                         <select
