@@ -23,7 +23,9 @@ class Offer extends Model implements HasMedia
         'price',
         'description',
         'author_id',
-        'status'
+        'status',
+        'deleted_by',
+        'deleted_at'
     ];
 
     public function author(): BelongsTo
