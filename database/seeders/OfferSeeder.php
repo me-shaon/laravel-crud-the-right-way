@@ -24,9 +24,9 @@ class OfferSeeder extends Seeder
         }
 
         foreach ($offers as $offer) {
-            $categories = Location::inRandomOrder()->limit(5)->get();
+            $locations = Location::inRandomOrder()->limit(5)->get();
 
-            $offer->locations()->sync($categories->pluck('id'));
+            $offer->locations()->sync($locations->pluck('id'));
         }
     }
 }
