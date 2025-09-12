@@ -5,5 +5,6 @@ This repository is a code demonstration for a FREE video course. In this course,
 
 (Click on the below image to go to the course)
 
-[![407282941_7719988058014480_1406439654307765686_n](https://github.com/me-shaon/laravel-crud-the-right-way/assets/831997/db1b69b3-487d-4cf4-ae53-854f48cea268)]([https://www.youtube.com/playlist?list=PL3H43eIOtaDOW29Z6S-7AnZYwUqOqHCxZ](https://megamindslearning.net/courses/laravel-crud-right-way))
+
+[![407282941_7719988058014480_1406439654307765686_n](https://github.com/me-shaon/laravel-crud-the-right-way/assets/831997/db1b69b3-487d-4cf4-ae53-854f48cea268)](https://megamindslearning.net/courses/laravel-crud-right-way)
 
